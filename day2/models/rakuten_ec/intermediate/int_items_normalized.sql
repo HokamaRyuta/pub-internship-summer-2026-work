@@ -20,14 +20,14 @@ with load_pi_i as (
             else item_name
           end as normalized_item_name // 注意！！
     from load_pi_i
-), add_discount_value as (
+), add_discount_amount as (
     select
         *
         , case
             when item_url is not null then
                 (MAX(unit_price) over (partition by item_url)) - unit_price
             else 0
-            end as discount_value
+            end as discount_amount
     from add_normalized_name
 ), final as (
     select
@@ -42,8 +42,8 @@ with load_pi_i as (
         , amount
         , total_price
         , is_sale
-        , discount_value
-    from add_discount_value
+        , discount_amount
+    from add_discount_amount
 )
 
 select *
