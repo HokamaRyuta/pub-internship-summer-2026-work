@@ -13,3 +13,14 @@ seeds:
       - name: gene
         description: 年代
         column_type: varchar
+
+        
+  - name: region_definition
+    description: 都道府県→地方区分の対応マスタ
+    columns:
+      - name: state_name
+        description: 都道府県名
+        column_type: varchar
+      - name: region_name
+        description: 地方区分（北海道・東北・関東・中部・近畿・中国・四国・九州・沖縄）
+        column_type: varchar
